@@ -7,7 +7,9 @@
         <h2>Series</h2>
         <p class="lead">Uma headline aqui</p>
         <ul>
-          <li>Uma lista aqui</li>
+          <% series.forEach(serie => { %>
+            <li><%= serie.name%> | <%= serie.status%> </li>
+          <% }) %> 
         </ul>
       </div>
     </div>

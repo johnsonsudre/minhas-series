@@ -6,5 +6,13 @@ const index = (req, res) => {
   })
 
 }
-const newSerie = (req, res) => res.render('series/newSerie')
+const newSerie = (req, res) => {
+  const serie = new Serie({
+    name: 'Dark',
+    status: 'watched'
+  })
+  serie.save(() => console.log('saved'))
+  res.render('series/newSerie')
+}
+
 module.exports = { index, newSerie }
