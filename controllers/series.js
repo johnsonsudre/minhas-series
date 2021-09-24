@@ -1,12 +1,18 @@
+
+const labels = [
+  { id: 'to-watch', name: 'Para assistir' },
+  { id: 'watching', name: 'Estou assistindo' },
+  { id: 'watched', name: 'Assisti' },
+]
+
 const index = ({ Serie }, req, res) => {
   Serie.find({}, (err, docs) => {
-    res.render('series/index', { series: docs })
+    res.render('series/index', { series: docs, labels })
   })
 
 }
 
 const newProcess = ({ Serie }, req, res) => {
-  console.log('req.body:', req.body)
   const serie = new Serie(req.body)
   serie.save(() => {
     console.log('saved')
@@ -19,8 +25,6 @@ const newForm = (req, res) => {
 }
 
 const remove = ({ Serie }, req, res) => {
-  console.log('remove')
-  console.log('req.params._id', req.params)
   Serie.deleteOne({
     _id: req.params.id
   }, err => {
@@ -29,4 +33,19 @@ const remove = ({ Serie }, req, res) => {
   })
 }
 
-module.exports = { index, newProcess, newForm, remove }
+const editForm = ({ Serie }, req, res) => {
+  const serie = Serie.findOne({ _id: req.params.id }, (err, serie) => {
+    res.render('series/edit', { serie, labels })
+  })
+}
+
+const editProcess = ({ Serie }, req, res) => {
+  Serie.findOne({ _id: req.params.id }, (err, serie) => {
+    serie.name = req.body.name
+    serie.status = req.body.status
+    serie.save()
+    res.redirect('/series')
+  })
+}
+
+module.exports = { index, newProcess, newForm, remove, editForm, editProcess }
