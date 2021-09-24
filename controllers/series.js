@@ -4,6 +4,7 @@ const index = ({ Serie }, req, res) => {
   })
 
 }
+
 const newProcess = ({ Serie }, req, res) => {
   console.log('req.body:', req.body)
   const serie = new Serie(req.body)
@@ -17,4 +18,15 @@ const newForm = (req, res) => {
   res.render('series/new')
 }
 
-module.exports = { index, newProcess, newForm }
+const remove = ({ Serie }, req, res) => {
+  console.log('remove')
+  console.log('req.params._id', req.params)
+  Serie.deleteOne({
+    _id: req.params.id
+  }, err => {
+    console.log('deleteOne')
+    res.redirect('/series')
+  })
+}
+
+module.exports = { index, newProcess, newForm, remove }
