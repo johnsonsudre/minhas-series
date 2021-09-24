@@ -11,7 +11,8 @@ const port = process.env.PORT || 3000
 const mongo = process.env.MONGODB || 'mongodb://localhost/my-series'
 
 // process request body
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // assets
 app.use(express.static('public'))
@@ -22,8 +23,6 @@ app.set('view engine', 'ejs')
 
 app.use('/', pageRouter)
 app.use('/series', seriesRouter)
-
-app.use(bodyParser)
 
 mongoose
   .connect(mongo, { useNewUrlParser: true, useUnifiedTopology: true })
