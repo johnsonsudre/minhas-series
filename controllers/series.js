@@ -5,47 +5,47 @@ const labels = [
   { id: 'watched', name: 'Assisti' },
 ]
 
-const index = ({ Serie }, req, res) => {
-  Serie.find({}, (err, docs) => {
-    res.render('series/index', { series: docs, labels })
-  })
-
+const index = async ({ Serie }, req, res) => {
+  const series = await Serie.find({})
+  res.render('series/index', { series, labels })
 }
 
-const newProcess = ({ Serie }, req, res) => {
+const newProcess = async ({ Serie }, req, res) => {
   const serie = new Serie(req.body)
-  serie.save(() => {
-    console.log('saved')
+  try {
+    await serie.save()
     res.redirect('/series')
-  })
+  } catch (e) {
+    res.render('series/new', { errors: Object.keys(e.errors) })
+  }
 }
 
 const newForm = (req, res) => {
-  res.render('series/new')
+  res.render('series/new', { errors: null })
 }
 
-const remove = ({ Serie }, req, res) => {
-  Serie.deleteOne({
-    _id: req.params.id
-  }, err => {
-    console.log('deleteOne')
+const remove = async ({ Serie }, req, res) => {
+  await Serie.deleteOne({ _id: req.params.id })
+  res.redirect('/series')
+}
+
+const editForm = async ({ Serie }, req, res) => {
+  const serie = await Serie.findOne({ _id: req.params.id })
+  res.render('series/edit', { serie, labels, errors: null })
+}
+
+const editProcess = async ({ Serie }, req, res) => {
+  const serie = await Serie.findOne({ _id: req.params.id })
+  serie.name = req.body.name
+  serie.status = req.body.status
+  try {
+    await serie.save()
     res.redirect('/series')
-  })
-}
-
-const editForm = ({ Serie }, req, res) => {
-  const serie = Serie.findOne({ _id: req.params.id }, (err, serie) => {
-    res.render('series/edit', { serie, labels })
-  })
-}
-
-const editProcess = ({ Serie }, req, res) => {
-  Serie.findOne({ _id: req.params.id }, (err, serie) => {
-    serie.name = req.body.name
-    serie.status = req.body.status
-    serie.save()
-    res.redirect('/series')
-  })
+  } catch (e) {
+    console.log(Object.keys(e.errors))
+    res.render('series/edit', { serie, labels, errors: Object.keys(e.errors) })
+    //res.render('/series/edit', { serie, labels, errors: Object.keys(e.errors) })
+  }
 }
 
 module.exports = { index, newProcess, newForm, remove, editForm, editProcess }

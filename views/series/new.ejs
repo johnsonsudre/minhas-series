@@ -7,9 +7,12 @@
         <h2>Nova serie</h2>
         <form method="POST">
           <div class="form-group">
-            <label for="serieName">Nome da série</label>
+            <label for="serieName">Nome da série></label>
             <input name='name' type="text" class="form-control" id="serieName" aria-describedby="serieHelp" placeholder="Entre como nome da série">
             <small id="serieHelp" class="form-text text-muted">Nome da série a ser salvo.</small>
+            <% if (errors) {%>
+              <small id="invalidName" class="text-danger form-text">Por favor, informe o nome da série.</small>
+              <%} %>
           </div>
           <div class="form-group">
             <label for="serieStatus">Situação</label>
