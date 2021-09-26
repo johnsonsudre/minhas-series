@@ -14,5 +14,8 @@ router.post('/new', controller.newProcess.bind(null, models))
 router.get('/remove/:id', controller.remove.bind(null, models))
 router.get('/edit/:id', controller.editForm.bind(null, models))
 router.post('/edit/:id', controller.editProcess.bind(null, models))
+router.get('/info/:id', controller.info.bind(null, models))
+router.post('/info/:id', controller.infoProcess.bind(null, models))
+router.get('/info/removeComment/:index/:id', controller.removeComment.bind(null, models))
 
 module.exports = router

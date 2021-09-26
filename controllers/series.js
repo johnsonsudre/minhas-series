@@ -21,7 +21,7 @@ const newProcess = async ({ Serie }, req, res) => {
 }
 
 const newForm = (req, res) => {
-  res.render('series/new', { errors: null })
+  res.render('series/new', { errors: [] })
 }
 
 const remove = async ({ Serie }, req, res) => {
@@ -31,7 +31,7 @@ const remove = async ({ Serie }, req, res) => {
 
 const editForm = async ({ Serie }, req, res) => {
   const serie = await Serie.findOne({ _id: req.params.id })
-  res.render('series/edit', { serie, labels, errors: null })
+  res.render('series/edit', { serie, labels, errors: [] })
 }
 
 const editProcess = async ({ Serie }, req, res) => {
@@ -44,8 +44,26 @@ const editProcess = async ({ Serie }, req, res) => {
   } catch (e) {
     console.log(Object.keys(e.errors))
     res.render('series/edit', { serie, labels, errors: Object.keys(e.errors) })
-    //res.render('/series/edit', { serie, labels, errors: Object.keys(e.errors) })
   }
 }
 
-module.exports = { index, newProcess, newForm, remove, editForm, editProcess }
+const info = async ({ Serie }, req, res) => {
+  const serie = await Serie.findOne({ _id: req.params.id })
+  res.render('series/info', { serie, labels, errors: [] })
+}
+
+const infoProcess = async ({ Serie }, req, res) => {
+  await Serie.updateOne({ _id: req.params.id }, {
+    $push: { comments: req.body.comment }
+  })
+  res.redirect('/series/info/' + req.params.id)
+}
+
+const removeComment = async ({ Serie }, req, res) => {
+  const serie = await Serie.findOne({ _id: req.params.id })
+  serie.comments.splice(req.params.index, 1)
+  await serie.save()
+  res.redirect('/series/info/' + req.params.id)
+}
+
+module.exports = { index, newProcess, newForm, remove, editForm, editProcess, info, infoProcess, removeComment }

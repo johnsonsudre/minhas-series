@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+
+<section id="about" class="py-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Sobre a série <%= serie.name %></h2>
+        <form method="POST">
+          <textarea class="form-control" name="comment" id="comment"></textarea>
+          <input type="submit" class="btn" value="Adicionar comentário">
+        </form>
+        <div class="card mt-3">
+          <h5 class="card-header mb-3">Meus comentários</h5>
+          <% serie.comments.forEach((comment,i) => { %> 
+            <div class="card m-2 my-0">
+              <div class="close p-0 m-0">
+                <a href="/series/info/removeComment/<%=i%>/<%=serie._id%>" type="button" class="btn mr-2 p-0 close" aria-label="Close">&times;</a>
+              </div>
+              <div class="card-body">
+                <%= comment %>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

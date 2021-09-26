@@ -1,33 +1,62 @@
 <%- include('../partials/header') %>
+      <div class="mx-auto">
+        <nav class="navbar navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand"><h2>Séries</h2></a>
+            <div class="d-flex">
+              <i class="fas fa-camera fa-10x"></i>
+              <div class="p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list">
+                  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+              </div>
+              <div class="p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" style="font-size: 32px">
+                  <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+                </svg>
+              </div>
 
-<section id="about">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2>Series</h2>
+            </div>
+          </div>
+        </nav>
+        
         <p class="lead">Todas as séries cadastradas<a href="/series/new" class='btn btn-info'>Nova série</a></p>
-        <table class="table table-hover">
+        <div class="row">
           <% series.forEach(serie => { %>
-            <tr>
-              <td>
-                <%= serie.name%>
-              </td>
-              <td>
-                <span class="badge badge-secondary">
-                  <%= labels.filter(label=> label.id === serie.status)[0].name %>
-                </span>
-              </td>
-              <td>
-                <a href="/series/edit/<%= serie._id %>" type="button">Editar</a>
-              |
-                <a href="/series/remove/<%= serie._id %>" type="button">Excluir</a>
-              </td>
-            </tr>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 px-0">
+              <div class="card m-2" href="/series/info/<%= serie._id %>">
+                <div class="card-header">
+                  <h5 class="card-title">
+                    <a href="/series/info/<%=serie._id%>" class="stretched-link">
+                      <%= serie.name%>
+                    </a>
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <span class="badge badge-secondary">
+                      <%= labels.filter(label=> label.id === serie.status)[0].name %>
+                    </span>
+                  </h5>
+                  <h6 class="card-subtitle mb-2"></h6>
+                  <% if (serie.comments.length-1>0) { %> 
+                    <p class="card-text">
+                      <%= serie.comments[serie.comments.length-1] %>
+                    </p>
+                  <%} else { %> 
+                    <p class="text-muted font-italic">
+                      Nenhum comentário adicionado.
+                    </p>
+                  <% } %>
+                  
+                  <a href="/series/edit/<%= serie._id %>" class="card-link">Editar</a>
+                  <a href="/series/remove/<%= serie._id %>" class="card-link">Excluir</a>
+                </div>
+              </div>
+            </div>
           <% }) %> 
-        </table>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
 <%- include('../partials/footer') %>

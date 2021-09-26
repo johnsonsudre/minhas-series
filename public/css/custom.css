@@ -1,0 +1,52 @@
+/*!
+ * Start Bootstrap - Scrolling Nav (http://startbootstrap.com/template-overviews/scrolling-nav)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-scrolling-nav/blob/master/LICENSE)
+ */
+
+body {
+  background: url('../images//smart-tv-watch-movies-and-tv-f01-pc0011.webp') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+header {
+  padding: 154px 0 100px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: black;
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 156px 0 100px;
+  }
+}
+
+
+
+section {
+  padding: 150px 0;
+}
+
+/* custom */
+.copyleft {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+select {
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+}
+
+select option {
+  padding: 10px;
+}
