@@ -14,6 +14,7 @@ body {
 
 header {
   padding: 154px 0 100px;
+  background-color: #48466d;
 }
 
 footer {
@@ -49,4 +50,28 @@ select {
 
 select option {
   padding: 10px;
+}
+
+.cold-0 {
+  background-color: #ffffff;
+}
+
+.cold-1 {
+  background-color: #5d5a8c;
+}
+
+.cold-2 {
+  background-color: #48466d;
+}
+
+.cold-3 {
+  background-color: #33324e;
+}
+
+.hot-0 {
+  background-color: #fbdb6b;
+}
+
+.hot-1 {
+  background-image: linear-gradient(to right, rgb(251, 176, 64) 0%, rgb(249, 237, 50) 100%);
 }
