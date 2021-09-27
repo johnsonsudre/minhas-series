@@ -1,3 +1,6 @@
+
+# ![logo](./public/images/logo-cover.png)
+
 <h1 align="center"><i>Minhas séries</i></h1>
 <h3 align="center">simple crud.</h3>
 
