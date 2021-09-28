@@ -10,6 +10,11 @@ const index = async ({ Serie }, req, res) => {
   res.render('series/index', { series, labels })
 }
 
+const list = async ({ Serie }, req, res) => {
+  const series = await Serie.find({})
+  res.render('series/list', { series, labels })
+}
+
 const newProcess = async ({ Serie }, req, res) => {
   const serie = new Serie(req.body)
   try {
@@ -66,4 +71,4 @@ const removeComment = async ({ Serie }, req, res) => {
   res.redirect('/series/info/' + req.params.id)
 }
 
-module.exports = { index, newProcess, newForm, remove, editForm, editProcess, info, infoProcess, removeComment }
+module.exports = { index, list, newProcess, newForm, remove, editForm, editProcess, info, infoProcess, removeComment }

@@ -1,8 +1,14 @@
 
-# ![logo](./public/images/logo-cover.png)
+<img src="./public/images/logo-cover.png" style="
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+" />
 
-<h1 align="center"><i>Minhas séries</i></h1>
-<h3 align="center">simple crud.</h3>
+<h4 align="center" style="margin:0;"><i>Cadastro de séries e comentários</h3>
+<h5 align="center" style="margin:0; margin-bottom: 25px">com nodejs, ejs, nosql db, bootstrap</h5>
+</i>
 
 |     | <p> . [About](#about) . [Folder Structures](#folder-structures) . [Libraries & Frameworks](#libraries-frameworks) . [Installation & Set Up](#installation-setup) . [Licence](#licence) . </p> |     |
 | --- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | --: |
@@ -11,7 +17,12 @@
 
 This project implement a small crud created with nodejs, express and mongodb with mongoose ORM.
 
-# ![](./public/images/cover.jpg)
+<img src="./public/images/cover.jpg" style="
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+" />
 
 
 #### 2. Folder Structures

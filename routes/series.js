@@ -9,6 +9,7 @@ const models = {
 }
 
 router.get('/', controller.index.bind(null, models))
+router.get('/list', controller.list.bind(null, models))
 router.get('/new', controller.newForm)
 router.post('/new', controller.newProcess.bind(null, models))
 router.get('/remove/:id', controller.remove.bind(null, models))
