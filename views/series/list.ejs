@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-      <div class="cold-1 text-white">
+      <div class="cold-1 text-white pb-5">
         <div class="mx-5">
           <nav class="navbar navbar-light">
             <div class="container-fluid">
@@ -14,7 +14,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" style="font-size: 32px">
                     <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
                   </svg>
-              </a>
+                </a>
               </div>
             </div>
           </nav>
@@ -23,33 +23,33 @@
           </div>
         </div>
         <div class="mx-5">
-        <table class="table table-hover mt-5">
-          <thead>
-            <tr>
-              <th colspan="3" class="text-center cold-3">
-                <h4>Todas as séries cadastradas</h4>
-              </th>
-            </tr>
-          </thead>
-          <% series.forEach(serie => { %>
-            <tr>
-              <td class=" font-weight-bold">
-                <%= serie.name%>
-              </td>
-              <td>
-                <span class="badge badge-secondary">
-                  <%= labels.filter(label=> label.id === serie.status)[0].name %>
-                </span>
-              </td>
-              <td>
-                <a href="/series/edit/<%= serie._id %>" type="button" class="text-white">Editar</a>
-              |
-                <a href="/series/remove/<%= serie._id %>" type="button" class="text-white">Excluir</a>
-              </td>
-            </tr>
-          <% }) %> 
-        </table>
-      </div>
+          <table class="table table-hover mt-5">
+            <thead>
+              <tr>
+                <th colspan="3" class="text-center cold-3">
+                  <h4>Todas as séries cadastradas</h4>
+                </th>
+              </tr>
+            </thead>
+            <% series.forEach(serie => { %>
+              <tr>
+                <td class=" font-weight-bold">
+                  <%= serie.name%>
+                </td>
+                <td>
+                  <span class="badge badge-secondary">
+                    <%= labels.filter(label=> label.id === serie.status)[0].name %>
+                  </span>
+                </td>
+                <td>
+                  <a href="/series/edit/<%= serie._id %>" type="button" class="text-white">Editar</a>
+                |
+                  <a href="/series/removeFromList/<%= serie._id %>" type="button" class="text-white">Excluir</a>
+                </td>
+              </tr>
+            <% }) %> 
+          </table>
+        </div>
       </div>
 
 <%- include('../partials/footer') %>

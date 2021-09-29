@@ -10,11 +10,12 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  overflow-y: scroll;
 }
 
 header {
   padding: 154px 0 100px;
-  background-color: #48466d;
+  background-color: #5d5a8c;
 }
 
 footer {

@@ -1,33 +1,34 @@
 <%- include('../partials/header') %>
-
-<section id="about" class="py-0">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2>Nova serie</h2>
-        <form method="POST">
-          <div class="form-group">
-            <label for="serieName">Nome da série></label>
-            <input name='name' type="text" class="form-control" id="serieName" aria-describedby="serieHelp" placeholder="Entre como nome da série">
-            <small id="serieHelp" class="form-text text-muted">Nome da série a ser salvo.</small>
-            <% if (errors) {%>
-              <small id="invalidName" class="text-danger form-text">Por favor, informe o nome da série.</small>
-              <%} %>
-          </div>
-          <div class="form-group">
-            <label for="serieStatus">Situação</label>
-            <select name='status' class="form-control form-control-lg" size="3" id="serieStatus">
-              <option selected value='to-watch'>Vou assistir ainda</option>
-              <option value='watching'>Estou assistindo</option>
-              <option value='watched'>Assisti toda</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Salvar</button>
-        </form>
-
+<div class="cold-1 text-white pb-5">
+  <div class="mx-5">
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand"><h2>Séries</h2></a>
       </div>
-    </div>
+    </nav>
   </div>
-</section>
+  <div class="mx-5">
+    <form method="POST">
+      <div class="form-group">
+        <label for="serieName">Nome da série</label>
+        <input name='name' type="text" class="form-control" id="serieName" aria-describedby="serieHelp" placeholder="Entre como nome da série">
+        <small id="serieHelp" class="form-text text-muted">Nome da série a ser salvo.</small>
+        <% if (errors.length>0) {%>
+          <small id="invalidName" class="text-danger form-text">Por favor, informe o nome da série.</small>
+        <%} %>
+      </div>
+      <div class="form-group">
+        <label for="serieStatus">Situação</label>
+        <select name='status' class="form-control form-control-lg" size="3" id="serieStatus">
+          <option selected value='to-watch'>Vou assistir ainda</option>
+          <option value='watching'>Estou assistindo</option>
+          <option value='watched'>Assisti toda</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+  </div>
+</div>
+    
 
 <%- include('../partials/footer') %>

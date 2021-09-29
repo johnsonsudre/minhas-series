@@ -23,17 +23,17 @@
           <div class="text-center">
             <a  href="/series/new" class='btn btn-lg hot-1 text-white font-weight-bold'>Nova série</a>
             <div  class="text-center cold-3 rounded">
-              <h4 class="mt-5 pb-2">Todas as séries cadastradas</h4>
+              <h4 class="mt-5 p-3">Todas as séries cadastradas</h4>
             </div>
           </div>
         </div>
-          <div class="row mx-5">
-            <% series.forEach(serie => { %>
+        <div class="row mx-5 pb-5">
+          <% series.forEach(serie => { %>
             <div class="col-sm  -12 col-md-12 col-lg-6 col-xl-4 px-0">
-              <div class="card m-2" href="/series/info/<%= serie._id %>">
+              <div class="card m-2 cold-2" href="/series/info/<%= serie._id %>">
                 <div class="card-header card-app">
                   <h5 class="card-title">
-                    <a href="/series/info/<%=serie._id%>" class="stretched-link">
+                    <a href="/series/info/<%=serie._id%>" class="stretched-link text-white">
                       <%= serie.name%>
                     </a>
                   </h5>
@@ -45,10 +45,10 @@
                     </span>
                   </h5>
                   <h6 class="card-subtitle mb-2"></h6>
-                  <% if (serie.comments.length-1>0) { %> 
-                    <p class="card-text">
-                      <%= serie.comments[serie.comments.length-1] %>
-                    </p>
+                  <% if (serie.comments.length-1>=0) { %> 
+                    <div class="card-body cold-0 rounded p-2 my-4">
+                      <p class="card-text text-dark"><%= serie.comments[serie.comments.length-1] %></p>
+                    </div>
                   <%} else { %> 
                     <p class="text-muted font-italic">
                       Nenhum comentário adicionado.

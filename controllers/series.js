@@ -21,6 +21,7 @@ const newProcess = async ({ Serie }, req, res) => {
     await serie.save()
     res.redirect('/series')
   } catch (e) {
+    console.log("Object.keys(e.errors):", Object.keys(e.errors))
     res.render('series/new', { errors: Object.keys(e.errors) })
   }
 }
@@ -32,6 +33,11 @@ const newForm = (req, res) => {
 const remove = async ({ Serie }, req, res) => {
   await Serie.deleteOne({ _id: req.params.id })
   res.redirect('/series')
+}
+
+const removeFromList = async ({ Serie }, req, res) => {
+  await Serie.deleteOne({ _id: req.params.id })
+  res.redirect('/series/list')
 }
 
 const editForm = async ({ Serie }, req, res) => {
@@ -71,4 +77,4 @@ const removeComment = async ({ Serie }, req, res) => {
   res.redirect('/series/info/' + req.params.id)
 }
 
-module.exports = { index, list, newProcess, newForm, remove, editForm, editProcess, info, infoProcess, removeComment }
+module.exports = { index, list, newProcess, newForm, remove, removeFromList, editForm, editProcess, info, infoProcess, removeComment }
