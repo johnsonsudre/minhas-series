@@ -24,6 +24,20 @@ This project implement a small crud created with nodejs, express and mongodb wit
   width: 80%;
 " />
 
+<img src="./public/images/list.jpg" style="
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+" />
+
+<img src="./public/images/series.jpg" style="
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+" />
+
 
 #### 2. Folder Structures
 
