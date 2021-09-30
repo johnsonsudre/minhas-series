@@ -31,11 +31,9 @@
           <% series.forEach(serie => { %>
             <div class="col-sm  -12 col-md-12 col-lg-6 col-xl-4 px-0">
               <div class="card m-2 cold-2" href="/series/info/<%= serie._id %>">
-                <div class="card-header card-app">
-                  <h5 class="card-title">
-                    <a href="/series/info/<%=serie._id%>" class="stretched-link text-white">
-                      <%= serie.name%>
-                    </a>
+                <div class="card-header card-app p-0 pl-3 pt-2">
+                  <h5 class="card-title text-white">
+                    <%= serie.name%>
                   </h5>
                 </div>
                 <div class="card-body">
@@ -48,11 +46,24 @@
                   <% if (serie.comments.length-1>=0) { %> 
                     <div class="card-body cold-0 rounded p-2 my-4">
                       <p class="card-text text-dark"><%= serie.comments[serie.comments.length-1] %></p>
+                      <% if (serie.comments.length-1>=1) { %> 
+                      <div class="card-footer m-0 p-0 border-0 text-right">
+                        <a href="/series/info/<%=serie._id%>" class="card-link stretched-link">outros...</a>
+                      </div>
+                      <% } %>
+                      <% if (serie.comments.length-1 === 0) { %> 
+                        <div class="card-footer m-0 p-0 border-0 text-right">
+                            <a href="/series/info/<%=serie._id%>" class=" card-link font-italic">Criar mais</a>
+                        </div>
+                      <% } %>
                     </div>
                   <%} else { %> 
-                    <p class="text-muted font-italic">
-                      Nenhum comentário adicionado.
-                    </p>
+                    <div class="m-0 p-0 border-0 text-right font-italic">
+                      <p class="text-muted font-italic mt-4">
+                        Nenhum comentário adicionado.
+                        <a href="/series/info/<%=serie._id%>" class="card-link stretched-link text-right font-italic">Criar comentários</a>
+                      </p>
+                    </div>
                   <% } %>
                   <a href="/series/edit/<%= serie._id %>" class="card-link">Editar</a>
                   <a href="/series/remove/<%= serie._id %>" class="card-link">Excluir</a>
