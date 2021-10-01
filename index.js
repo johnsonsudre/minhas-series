@@ -8,7 +8,7 @@ const pageRouter = require('./routes/pages')
 const seriesRouter = require('./routes/series')
 
 const port = process.env.PORT || 3000
-const mongo = process.env.MONGODB || 'mongodb://localhost/my-series'
+const mongo = process.env.MONGODB_URI || 'mongodb://localhost/my-series'
 
 // process request body
 app.use(bodyParser.urlencoded({ extended: true }));
