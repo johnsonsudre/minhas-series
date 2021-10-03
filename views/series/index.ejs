@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+<% console.log('%cindex.ejs line:2 ini index ejs', 'color: #007acc;'); %>
       <div class="cold-1 text-white">
         <div class="mx-5">
           <nav class="navbar navbar-light">
@@ -29,7 +30,7 @@
         </div>
         <div class="row mx-5 pb-5">
           <% series.forEach(serie => { %>
-            <div class="col-sm  -12 col-md-12 col-lg-6 col-xl-4 px-0">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 px-0">
               <div class="card m-2 cold-2" href="/series/info/<%= serie._id %>">
                 <div class="card-header card-app p-0 pl-3 pt-2">
                   <h5 class="card-title text-white">

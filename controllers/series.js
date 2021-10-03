@@ -6,7 +6,9 @@ const labels = [
 ]
 
 const index = async ({ Serie }, req, res) => {
+  console.log('%cseries.js line:09 req', 'color: #007acc;', req);
   const series = await Serie.find({})
+  console.log('%cseries.js line:11 series', 'color: #007acc;', series);
   res.render('series/index', { series, labels })
 }
 

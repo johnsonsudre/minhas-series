@@ -32,6 +32,6 @@ mongoose
       console.log('Listening port ', port)
     })
   })
-  .catch(e => console.log(e))
+  .catch(e => console.log("Mongoose connect error: ",e))
 
   module.exports = app
