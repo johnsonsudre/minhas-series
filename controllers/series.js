@@ -6,9 +6,7 @@ const labels = [
 ]
 
 const index = async ({ Serie }, req, res) => {
-  console.log('%cseries.js line:09 req', 'color: #007acc;', req);
   const series = await Serie.find({})
-  console.log('%cseries.js line:11 series', 'color: #007acc;', series);
   res.render('series/index', { series, labels })
 }
 
@@ -23,7 +21,6 @@ const newProcess = async ({ Serie }, req, res) => {
     await serie.save()
     res.redirect('/series')
   } catch (e) {
-    console.log("Object.keys(e.errors):", Object.keys(e.errors))
     res.render('series/new', { errors: Object.keys(e.errors) })
   }
 }
@@ -55,7 +52,6 @@ const editProcess = async ({ Serie }, req, res) => {
     await serie.save()
     res.redirect('/series')
   } catch (e) {
-    console.log(Object.keys(e.errors))
     res.render('series/edit', { serie, labels, errors: Object.keys(e.errors) })
   }
 }
